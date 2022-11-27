@@ -57,5 +57,5 @@ static void usart_baudrate_calibration ( int __baudrate  ) ;
 
 void  USART_setting ( int __baudrate)   ;  
 void  usart_pooling_tx (char  * cbits )   ; 
-
+uint8_t  usart_pooling_rx () ;  
 #endif   

@@ -41,3 +41,12 @@ void usart_pooling_tx ( char * cbits ) {
     }
 
 } 
+
+uint8_t usart_pooling_rx  () { 
+    while ( (UCSR0A  &  ( 1 << RXC0 ) ) == 0 ) {} ; 
+    
+    uint8_t data ;  
+    data = UDR0 ; 
+    return  data ; 
+
+} 
