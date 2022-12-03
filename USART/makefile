@@ -1,10 +1,27 @@
 
 
-cc  = avr-gcc  
-cflags = -Wall -Wextra -O2  -mmcu=atmega328p -DF_CPU=16000000UL   
+cc  = avr-gcc   
+board=atmega328p 
+hardware_platform=arduino 
+CLK_CYCL:=16000000UL 
+cflags = -Wall -Wextra -O2  -mmcu=$(board) -DF_CPU=$(CLK_CYCL) 
 SRC=$(wildcard *.c ) 
 OBJ=$(SRC:.c=.o) 
-exec =avrusartxrx.elf 
+exec =avrusartxrx.elf
+
+io_serial?= 
+ifeq ($(shell  uname -s) ,Linux) 
+	io_serial=/dev/ttyUSB0  
+endif 
+# for arduino nano 
+# add  -b 57600 
+# ex : make type=nano 
+type:=
+fbaud:= 
+ifeq ($(type) ,nano) 
+	fbaud= -b 57600 
+endif
+
 
 all : $(exec) 
 
@@ -26,7 +43,7 @@ ihex  : $(exec)
 
 flash :  ihex 
 	@echo -e "AVR FLASH "
-	avrdude  -F -v  -c arduino  -P /dev/ttyUSB0  -p atmega328p   -U flash:w:$(exec:.elf=.hex) 
+	avrdude  -F -v  -c $(hardware_platform)   -P $(io_serial)   -p $(board) $(fbaud)    -U flash:w:$(exec:.elf=.hex) 
 
 
 clean : 

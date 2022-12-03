@@ -21,9 +21,9 @@ void main () {
         char  sstr = {0} ; 
         sprintf (sstr,"data -> %i : %c \n\r" , data , data ) ; 
 
-        usart_pooling_tx(s) ;   
+        usart_pooling_tx(sstr) ;   
         
-        if ( data  == 'a' || data  == 'A') )  
+        if ( data  == 'a' || data  == 'A') 
         {
             PORTB |= (1<<PORTB5) ;
             _delay_ms(3000) ;  
