@@ -1,13 +1,13 @@
 
-
 cc  = avr-gcc   
 board=atmega328p 
 hardware_platform=arduino 
 CLK_CYCL:=16000000UL
-
-header_location:=./include 
+header_location:=./include  
+sharedLib_location=../sharedLib/
 cflags = -Wall -Wextra -O2  -mmcu=$(board) -DF_CPU=$(CLK_CYCL)  -I $(header_location) 
 SRC=$(wildcard *.c ) 
+sourcefile:=
 OBJ=$(SRC:.c=.o) 
 exec =avrusartxrx.elf
 
@@ -32,6 +32,9 @@ $(exec)  : ${OBJ}
 	@echo -e " AVR LD "
 	$(cc) -o $@ $^ $(cflags)  
 
+shared_object :  $(sourcefile)   
+	@echo  -e "SHARED OBJ" 
+	$(cc)  -o  $(sharedLib_location)lib$(exec:.elf=.so)  -fpic -shared  $(sourcefile)  $(cflags) 
 
 %.o :  %.c 
 	@echo -e "AVR CC "
