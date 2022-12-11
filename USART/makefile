@@ -3,8 +3,10 @@
 cc  = avr-gcc   
 board=atmega328p 
 hardware_platform=arduino 
-CLK_CYCL:=16000000UL 
-cflags = -Wall -Wextra -O2  -mmcu=$(board) -DF_CPU=$(CLK_CYCL) 
+CLK_CYCL:=16000000UL
+
+header_location:=./include 
+cflags = -Wall -Wextra -O2  -mmcu=$(board) -DF_CPU=$(CLK_CYCL)  -I $(header_location) 
 SRC=$(wildcard *.c ) 
 OBJ=$(SRC:.c=.o) 
 exec =avrusartxrx.elf

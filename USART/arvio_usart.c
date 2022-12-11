@@ -1,7 +1,7 @@
 #include <avr/io.h> 
 #include <util/delay.h>  
 
-#include "include/avrio_usart.h" 
+#include "avrio_usart.h" 
 
 
 static void usart_baudrate_calibration (int  __ubrr ) { 
@@ -39,7 +39,6 @@ void usart_pooling_tx ( char * cbits ) {
         _delay_ms(1.5) ;    
         cbits++ ; 
     }
-
 } 
 
 uint8_t usart_pooling_rx  () { 
