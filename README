@@ -1,0 +1,20 @@
+8bits-AVR-C  
+---  
+C Bare-metal programming on an 8-bit AVR microcontroller using the GNU tool chain for experimental purposes and just for fun 
+
+
+Requirements 
+------------ 
+
+> Toolchains and build System 
+
+-- avr-gcc   
+-- avrdude
+-- cmake
+-- avr-binutils 
+
+
+
+Participate
+-----------
+| Issues , pull requests, ideas... ,no restriction you are welcome , feel free to contribute  in any way  you can 
