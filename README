@@ -1,7 +1,7 @@
-8bits-AVR-C  
----  
-C Bare-metal programming on an 8-bit AVR microcontroller using the GNU tool chain for experimental purposes and just for fun 
+-- Readme for 8bits-AVR-C  
+--C Bare-metal programming on an 8-bit AVR microcontroller using the GNU tool chain for experimental purposes and just for fun 
 
+-- CC0 1.0 Universal 
 
 Requirements 
 ------------ 
